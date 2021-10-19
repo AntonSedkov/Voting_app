@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
-            log.debug("Authentication {}", email);
+            log.debug("Authentication '{}'", email);
             Optional<User> optionalUser = userRepository.findUserByEmailIgnoreCase(email);
             return new AuthUser(optionalUser.orElseThrow(
                     () -> new UsernameNotFoundException("User '" + email + "' was not found")));

@@ -1,17 +1,18 @@
 package by.anthony.hateoasexample;
 
 import by.anthony.hateoasexample.model.User;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
+@ToString(of = "user")
 public class AuthUser extends org.springframework.security.core.userdetails.User {
-    @NotNull
-    private User user;
 
-    public AuthUser(User user) {
+    private final User user;
+
+    public AuthUser(@NotNull User user) {
         super(user.getEmail(), user.getPassword(), user.getRoles());
         this.user = user;
     }
