@@ -37,8 +37,19 @@ spring:
 
 
 #  jackson:
- #   visibility:
-  #    field: any
-   #   getter: none
-    #  setter: none
-     # is-getter: none
+#    visibility:
+#      field: any
+#      getter: none
+#      setter: none
+#      is-getter: none
+#  security:
+#    user:
+#      name: user
+#      password: pass
+#      roles: USER
+
+logging:
+  level:
+    root: WARN
+    by.anthony.hateoasexample: DEBUG
+    org.springframework.security.web.FilterChainProxy: DEBUG
