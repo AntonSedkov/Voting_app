@@ -1,5 +1,8 @@
 package by.anthony.hateoasexample.model;
 
+import by.anthony.hateoasexample.util.DeserializerJson;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
@@ -35,6 +38,8 @@ public class User extends BaseEntity implements Serializable {
 
     @Column(name = "password")
     @Size(max = 256)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonDeserialize(using = DeserializerJson.PasswordDeserializer.class)
     private String password;
 
     @Enumerated(EnumType.STRING)
