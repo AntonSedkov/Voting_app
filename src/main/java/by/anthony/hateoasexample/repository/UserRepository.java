@@ -1,6 +1,8 @@
 package by.anthony.hateoasexample.repository;
 
 import by.anthony.hateoasexample.model.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,5 +21,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findUserByEmailIgnoreCase(@Param("email") String email);
 
     @RestResource(rel = "by-lastname", path = "by-lastname")
-    List<User> findByLastNameContainingIgnoreCase(String lastName);
+    Page<User> findByLastNameContainingIgnoreCase(String lastName, Pageable page);
 }
